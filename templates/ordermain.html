@@ -1,0 +1,26 @@
+
+{% extends 'index.html' %}
+{% import 'formmacro.html'as forms %}
+{% import 'listmacro.html'as lists %}
+{# #}
+{% block title %}订单主页{%endblock%}
+{% block left -%}
+    <ul class="list-group">
+        <li class="list-group-item"><a href="ordernow">今日待办</a></li>
+        <li class="list-group-item"><a href="ordersearch">订单查询</a></li>
+        <li class="list-group-item"><a href="orderadd">订单录入</a></li>
+        <li class="list-group-item"><a href="orderanalyze">订单分析</a></li>
+    </ul>
+{%- endblock %}
+{% block pagearea -%}
+	{% if ordernow -%}
+	{%- endif %}
+	{% if orderlist -%}
+		{{lists.table(orderlist)}}
+	{%- endif %}
+	{% if orderform -%}
+		{{forms.form(bindurl,orderform)}}
+	{%- endif %}
+	{% if orderanalyze -%}
+	{%- endif %}
+{%- endblock %}

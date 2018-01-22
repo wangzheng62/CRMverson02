@@ -1,0 +1,26 @@
+
+{% extends 'index.html' %}
+{% import 'formmacro.html'as forms %}
+{% import 'listmacro.html'as lists %}
+{# #}
+{% block title %}产品主页{%endblock%}
+{% block left -%}
+    <ul class="list-group">
+        <li class="list-group-item"><a href="productnow">今日待办</a></li>
+        <li class="list-group-item"><a href="productsearch">产品查询</a></li>
+        <li class="list-group-item"><a href="productadd">产品录入</a></li>
+        <li class="list-group-item"><a href="productanalyze">仓储分析</a></li>
+    </ul>
+{%- endblock %}
+{% block pagearea -%}
+	{% if productnow -%}
+	{%- endif %}
+	{% if productlist -%}
+		{{lists.table(productlist)}}
+	{%- endif %}
+	{% if productform -%}
+		{{forms.form(bindurl,productform)}}
+	{%- endif %}
+	{% if productanalyze -%}
+	{%- endif %}
+{%- endblock %}

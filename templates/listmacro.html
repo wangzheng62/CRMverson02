@@ -1,0 +1,20 @@
+{# 表格模板 data为带列名的列表[('列名'),(),()] #}
+{% macro table(data) -%}
+    <table class="table table-hover">
+        {% for tr in data -%}
+            {% if loop.first -%}
+                <tr>
+                {% for th in tr -%}
+                    <th>{{ th }}</th>
+                {%- endfor %}
+                </tr>
+            {% else %}
+            <tr>
+            {% for td in tr -%}
+                <td>{{ td }}</td>
+                {%- endfor  %}
+            </tr>
+            {%- endif %}
+        {%- endfor %}
+    </table>
+{%- endmacro %}
