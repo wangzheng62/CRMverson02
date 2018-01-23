@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
+	<script src="/static/js/jquery-3.2.1.js"></script>
+	<script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/echarts.js"></script>
+	{% block link%}{% endblock %}
+	{% block script%}{% endblock %}
+</head>
+<body>
+<nav id="top" class="navbar navbar-inverse">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        {% block top %}{% endblock %}
+    </div>
+    </div>
+</nav>
+	<div id="left" class="col-lg-2 col-md-2 col-sm-2">{% block left %}{% endblock %}</div>
+	<div id="pagearea" class="col-lg-8 col-md-8 col-sm-8">
+    <form action="/login" method="post">
+                        <span>请输入账号</span>
+                        <input type="text" name="name"  placeholder="name">
+                        <span>请输入密码</span>
+                        <input type="password" name="pw" placeholder="password">
+                        <input type="submit" name="submit">
+                         </form>
+        {% if welcome -%}
+            {{ welcome }}
+        {%- endif %}
+        {% block pagearea %}{% endblock %}
+    </div>
+	<div id="right" class="col-lg-2 col-md-2 col-sm-2">
+        {% block right %}{% endblock %}
+    {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            {% for message in messages %}
+                <script>alert("{{ message }}")</script>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </div>
+
+</body>
+</html>

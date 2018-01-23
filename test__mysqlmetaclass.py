@@ -161,33 +161,32 @@ class MysqlTable(MysqlTableBase):
     def search(self, NUM=0):
         __condition = 'where'
         for key in self.info:
-            if self.info[key][0] == '':
+            if self.info[key]=='':
                 pass
             else:
-                __condition = __condition + ' {}=\'{}\' and'.format(key, self.info[key][0])
-        if len(__condition) <= 6:
+                __condition = __condition + ' {}=\'{}\' and'.format(key, self.info[key])
+        if len(__condition)<=6:
             return []
         else:
             __condition = __condition[:-4]
             if NUM == 0:
                 __SQL = self.select(COLNAMES='*', TABLES=self.table_name, WHERE=__condition)
             else:
-                __SQL = self.select(COLNAMES='*', TABLES=self.table_name, WHERE=__condition,
-                                    LIMIT='LIMIT {}'.format(NUM))
+                __SQL = self.select(COLNAMES='*', TABLES=self.table_name, WHERE=__condition, LIMIT='LIMIT {}'.format(NUM))
             return self.getdata(__SQL)
 
     def save(self):
-        __COLNAME = '( '
-        __VALUES = '( '
+        __COLNAME='( '
+        __VALUES='( '
         for key in self.info:
-            if self.info[key] == '':
+            if self.info[key]=='':
                 pass
             else:
-                __COLNAME = __COLNAME + key + ','
-                __VALUES = __VALUES + '\'' + self.info[key] + '\'' + ','
-        __COLNAME = __COLNAME[:-1] + ')'
-        __VALUES = __VALUES[:-1] + ')'
-        __SQL = self.insert(TABLES=self.table_name, COLNAMES=__COLNAME, VALUES=__VALUES)
+                __COLNAME=__COLNAME+key+','
+                __VALUES=__VALUES+'\''+self.info[key]+'\''+','
+        __COLNAME=__COLNAME[:-1]+')'
+        __VALUES=__VALUES[:-1]+')'
+        __SQL=self.insert(TABLES=self.table_name,COLNAMES=__COLNAME,VALUES=__VALUES)
         print(__SQL)
         try:
             self.changedata(__SQL)
@@ -195,6 +194,9 @@ class MysqlTable(MysqlTableBase):
         except Exception as e:
             print(e)
             return False
+
+
+        pass
 
     # 辅助功能
 

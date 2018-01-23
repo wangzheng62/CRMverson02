@@ -1,5 +1,7 @@
 
 {% extends 'index.html' %}
+{% import 'formmacro.html'as forms %}
+{% import 'listmacro.html'as lists %}
 {% block title %}客户主页{%endblock%}
 {% block left -%}
     <ul class="list-group">
@@ -8,4 +10,16 @@
         <li class="list-group-item"><a href="customeradd">客户录入</a></li>
         <li class="list-group-item"><a href="customeranalyze">客户分析</a></li>
     </ul>
+{%- endblock %}
+{% block pagearea -%}
+	{% if customernow -%}
+	{%- endif %}
+	{% if customerlist -%}
+		{{lists.table(customerlist)}}
+	{%- endif %}
+	{% if customerform -%}
+		{{forms.form(bindurl,customerform)}}
+	{%- endif %}
+	{% if customeranalyze -%}
+	{%- endif %}
 {%- endblock %}

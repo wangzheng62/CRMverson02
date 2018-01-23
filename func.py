@@ -10,7 +10,14 @@ class Crm(MysqlDB, DBserver):
 
 
 class Employee(MysqlTable, Crm):
-    pass
+	def is_authenticated(self):
+		return True
+	def is_active(self):
+		return True
+	def is_anonymous(self):
+		return False
+	def get_id(self):
+		return self.search()
 class Orderlist(MysqlTable, Crm):
     pass
 class Product(MysqlTable, Crm):

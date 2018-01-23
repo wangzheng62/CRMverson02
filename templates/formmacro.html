@@ -3,7 +3,7 @@
 {% macro col(key,notnull) -%}
     <div class="col-lg-4 col-md-4 col-sm-4">
         <div class="form-group">
-            <label for={{key}} class=" control-label">{{key}}</label>
+            <div><label for={{key}} class=" control-label">{{key}}</label></div>
 			{% if notnull=="YES" -%}
 				<input type="text" class=" form-control" name="{{key}}" placeholder="在此输入">
 			{% elif notnull=="NO" %}

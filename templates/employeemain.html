@@ -1,13 +1,26 @@
 
 {% extends 'index.html' %}
 {% import 'formmacro.html'as forms %}
+{% import 'listmacro.html'as lists %}
 {# #}
 {% block title %}人事主页{%endblock%}
 {% block left -%}
     <ul class="list-group">
-        <li class="list-group-item">今日待办</li>
-        <li class="list-group-item">员工查询</li>
-        <li class="list-group-item">员工录入</li>
-        <li class="list-group-item">员工分析</li>
+        <li class="list-group-item"><a href="employeenow">今日待办</a></li>
+        <li class="list-group-item"><a href="employeesearch">员工查询</a></li>
+        <li class="list-group-item"><a href="employeeadd">员工录入</a></li>
+        <li class="list-group-item"><a href="employeeanalyze">员工分析</a></li>
     </ul>
+{%- endblock %}
+{% block pagearea -%}
+	{% if employeenow -%}
+	{%- endif %}
+	{% if employeelist -%}
+		{{lists.table(employeelist)}}
+	{%- endif %}
+	{% if employeeform -%}
+		{{forms.form(bindurl,employeeform)}}
+	{%- endif %}
+	{% if employeeanalyze -%}
+	{%- endif %}
 {%- endblock %}
