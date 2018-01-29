@@ -1,0 +1,12 @@
+td
+  {
+  width:10px;
+  text-align:center;
+  text-overflow:ellipsis;
+  }
+th
+  {
+	width:10px;
+  text-align:center;
+  text-overflow:ellipsis;
+  }
