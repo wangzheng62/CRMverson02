@@ -6,10 +6,10 @@
 {% block title %}人事主页{%endblock%}
 {% block left -%}
     <ul class="list-group">
-        <li class="list-group-item"><a href="employeenow">今日待办</a></li>
-        <li class="list-group-item"><a href="employeesearch">员工查询</a></li>
-        <li class="list-group-item"><a href="employeeadd">员工录入</a></li>
-        <li class="list-group-item"><a href="employeeanalyze">员工分析</a></li>
+    {% for subpage in subpages %}
+        <li class="list-group-item"><a href="{{ subpage.url }}">{{ subpage.text }}</a></li>
+
+    {% endfor %}
     </ul>
 {%- endblock %}
 {% block pagearea -%}

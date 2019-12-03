@@ -1,20 +1,32 @@
-{# 表格模板 data为带列名的列表[('列名'),(),()] #}
+{# 表格模板 d = {
+        "id":'employeelist',
+        "name": 'employeelist',
+        "css":'table table-hover table-bordered',
+        "colnames": colnames,
+        "lang":chi,
+        "step": 5,
+        "pages": 1,
+        "data":data
+    } #}
 {% macro table(data) -%}
-    <table class="table table-hover">
-        {% for tr in data -%}
-            {% if loop.first -%}
-                <tr>
-                {% for th in tr -%}
-                    <th>{{ th }}</th>
-                {%- endfor %}
-                </tr>
-            {% else %}
-            <tr>
+    <table class="{{ data.css }}" id="{{ data.id }}" name="{{ data.name }}">
+        <tr>
+        {% if data.lang %}
+            {% for colname in data.lang -%}
+                <th>{{ colname }}</th>
+            {%- endfor  %}
+        {% else %}
+            {% for colname in data.colnames -%}
+                <th>{{ colname }}</th>
+            {%- endfor  %}
+        {% endif %}
+        </tr>
+        {% for tr in data.data -%}
+        <tr>
             {% for td in tr -%}
-                <td>{{ td }}</td>
-                {%- endfor  %}
-            </tr>
-            {%- endif %}
-        {%- endfor %}
+            <td>{{ td }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
     </table>
 {%- endmacro %}
