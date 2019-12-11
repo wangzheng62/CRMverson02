@@ -38,7 +38,7 @@ class Thebest():
         with open(os.path.join(self.Jinjiadir,'testjinjia.html'),'a',encoding='utf8') as f:
             f.write(head+default+last)
     def createRoute(self):
-        with open(os.path.join(self.Routedir,'testRoute.py'),'a',encoding='utf8') as f:
+        with open(os.path.join(self.Routedir,'api.py'),'a',encoding='utf8') as f:
             f.write('')
     def createDatabase(self):
         with open(os.path.join(self.Database,'testDate.py'),'a',encoding='utf8') as f:
