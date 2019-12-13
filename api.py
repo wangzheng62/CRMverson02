@@ -19,9 +19,10 @@ api.add_resource(H, '/123/<todo_id>')
 
 class Employee(Resource):
     def get(self):
+        print(self.__class__.__name__)
         return {}
     def put(self):
         return {}
 api.add_resource(Employee,'/employee')
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', debug=True)
+    print(Employee.__name__)

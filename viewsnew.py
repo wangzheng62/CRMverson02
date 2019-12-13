@@ -12,7 +12,7 @@ class Baseview(View):
     temp='data01.html'
     def __init__(self,**kw):
         self.kw=kw
-        print(kw)
+
     def dispatch_request(self):
         return render_template(self.temp, **self.kw)
 view=Baseview.as_view('base01',topclass='navbar navbar-inverse')
@@ -40,7 +40,7 @@ def getdata():
 #数据定义区
 rootpath='/'
 employeenow={'text':'今日待办','url':'employeenow','welcome':'本功能尚未开放'}
-employeesearch={'text':'员工查询','url':'employeesearch','welcome':'','employeelist':getdata()}
+employeesearch={'text':'员工查询','url':'employe esearch','welcome':'','employeelist':getdata()}
 employeeadd={'text':'员工录入','url':'employeeadd','welcome':'','employeeform':getdata()["colnames"]}
 employeeanalyze={'text':'员工分析','url':'employeeanalyze','welcome':'本功能尚未开放'}
 employeelock={'text':'今日','url':'employeelock','welcome':'本功能尚未开放'}
@@ -68,7 +68,7 @@ class Employeeview(View):
     temp='employeemain.html'
     def __init__(self,**kw):
         self.kw=kw
-        print(kw)
+
     def dispatch_request(self):
         return render_template(self.temp, **self.kw)
 
@@ -80,7 +80,7 @@ class Indexview(View):
     temp='index.html'
     def __init__(self,**kw):
         self.kw=kw
-        print(kw)
+
     def dispatch_request(self):
         return render_template(self.temp, **self.kw)
 
@@ -89,12 +89,12 @@ view=Indexview.as_view('ppp',**index)
 app.add_url_rule("/index",view_func=view)
 if index['subpages']:
     for d in index['subpages']:
-        print(d)
+
         view1=Employeeview.as_view(d['url'],**d)
         app.add_url_rule(rootpath+d['url'],view_func=view1)
         if 'subpages'in d:
             for d1 in d['subpages']:
-                print(d1)
+
                 view2=Employeeview.as_view(d1['url'],**d1)
                 app.add_url_rule(rootpath+d1['url'],view_func=view2)
 
