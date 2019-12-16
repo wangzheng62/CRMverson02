@@ -8,17 +8,32 @@ from viewsnew import app
 api=Api(app,prefix='/api')
 
 todos={'a':1,1:2,'b':3}
-class H(Resource):
+class HR(Resource):
+    #select
     def get(self,table):
-        temp='select * from {} WHERE {}={};'
+        temp='select * from {} WHERE '
         d=request.args.to_dict()
-        return temp.format(table,d.keys(),d.values())
+        pt="{}='{}'"
+        l=[]
+        for key in d:
+            ts=pt.format(key,d[key])
+            l.append(ts)
+        s=' and '.join(l)
+        print(s)
+        temp=temp+s+';'
+        return temp.format(table)
+    #update
     def put(self,todo_id):
         todos[todo_id]=request.form['data']
         return {todo_id:todos[todo_id]}
+    #delete
+    def delete(self):
+        pass
+    #create
+    def post(self):
+        pass
 
 
-api.add_resource(H, '/125/<table>')
 
 class Employee(Resource):
     def get(self):
