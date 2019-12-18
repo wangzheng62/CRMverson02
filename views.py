@@ -25,6 +25,7 @@ def root():
 @app.route('/login', methods=['get', 'post'])
 def login():
     kw = request.form.to_dict()
+    print(kw)
     e = Employee(user_Id=kw['name'])
     if e.count() == 1 and kw['pw']==e.search()[0][9]:
         login_user(e)

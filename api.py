@@ -6,7 +6,8 @@ import func,time
 from flask_restful import Resource,Api
 from viewsnew import app
 api=Api(app,prefix='/api')
-
+from testldap import testpw
+from ldap3 import Server,ALL
 todos={'a':1,1:2,'b':3}
 class HR(Resource):
     #select
@@ -30,18 +31,40 @@ class HR(Resource):
     def delete(self):
         pass
     #create
-    def post(self):
-        pass
+    def post(self,table):
+        d=request.form.to_dict()
+        print(d)
+        host=d['server']
+        server=Server(host,port=636,use_ssl=True,get_info=ALL)
+        if testpw(server,user=d['username'],password=d['password']):
+            return '验证成功'
+        else:
+            return {'res':'验证失败'}
 
 
 
-class Employee(Resource):
-    def get(self):
-        print(self.__class__.__name__)
-        return {}
-    def put(self):
-        return {}
-api.add_resource(Employee,'/employee')
+
+class DC(Resource):
+    def get(self,table):
+        d=request.args.to_dict()
+        return d
+    def put(self,todo_id):
+
+        return 'put'
+    #delete
+    def delete(self):
+        return 'del'
+    #create
+    def post(self,table):
+        d=request.form.to_dict()
+        print(d)
+        host=d['server']
+        server=Server(host,port=636,use_ssl=True,get_info=ALL)
+        if testpw(server,user=d['username'],password=d['password']):
+            return '验证成功'
+        else:
+            return {'res':'验证失败'}
+
 if __name__ == '__main__':
     app.run(host='127.0.0.1', debug=True)
-    print(Employee.__name__)
+
