@@ -19,10 +19,14 @@ if __name__=='__main__':
     server=Server(host,port=636,use_ssl=True,get_info=ALL)
     conn=Connection(server,user='WZ\\administrator',password='Ibm12345678.',authentication='NTLM',auto_bind=True)
 
-    res=conn.search('DC=wz,DC=edu','(&(objectclass=user)(name=test005))')
+    res=conn.search('DC=wz,DC=edu','(&(objectclass=user)(name=test005))',attributes=['objectclass','name','pwdlastset'])
     print(conn)
-    print(conn.entries)
-    print(server.schema.object_classes['user'])
+    for index,i in enumerate(conn.entries):
+        print(index)
+        print(i)
+        s=str(i)
+        print(s)
+
     newpw="Ibm12345678."
 
     if testpw(server,user='CN=test005,OU=ttttttttt,DC=wz,DC=edu',password='123456'):
