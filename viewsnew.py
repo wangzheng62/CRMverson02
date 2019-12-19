@@ -97,6 +97,15 @@ if index['subpages']:
 
                 view2=Employeeview.as_view(d1['url'],**d1)
                 app.add_url_rule(rootpath+d1['url'],view_func=view2)
+@app.route('/test')
+def tst():
+    print(request.cookies)
+    print(request.headers)
+    print(request.is_xhr)
+    print(request.remote_addr)
+    print(request.remote_user)
+    print(request.environ)
+    return render_template('test.html')
 
 if __name__ == '__main__':
     @app.route('/api/123',methods=['get'])
@@ -104,4 +113,4 @@ if __name__ == '__main__':
         return 'aaaa'
     view5=Indexview.as_view('ind',**index)
     app.add_url_rule('/api/124',view_func=view5)
-    app.run(host='127.0.0.1', debug=True)
+    app.run(host='0.0.0.0', debug=True)
