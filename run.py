@@ -1,5 +1,5 @@
 from api import api,HR,DC
-from viewsnew import app
+from loginhistoru import app
 if __name__ == '__main__':
     api.add_resource(HR, '/HR/<table>')
     api.add_resource(DC, '/DC/<table>')
