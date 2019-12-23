@@ -1,5 +1,6 @@
+
+from loginhistoru import app
 import api
-from loginhistoru import app,LoginView
 if __name__ == '__main__':
     #view=LoginView.as_view('loginfirst',url='/api/DC/em')
     #app.add_url_rule('/loginfirst',view_func=view)
