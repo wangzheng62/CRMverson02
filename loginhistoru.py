@@ -3,7 +3,7 @@ from func import DBserver, Crm, Product, Orderlist, Employee, Customer
 from flask_login import LoginManager, login_user, login_required, logout_user
 from flask.views import View
 import func,time
-import json
+import jsondata
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 @app.route('/',methods=['get'])
@@ -14,7 +14,7 @@ def mainpage():
         res=rv.data.decode(encoding='utf8')
         print(type(res))
         print(res)
-        re=json.loads(res)
+        re=jsondata.loads(res)
         print(re)
 
     if re['res']:

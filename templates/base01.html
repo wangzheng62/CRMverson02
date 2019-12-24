@@ -7,18 +7,37 @@
     <script src="/static/js/jquery-3.2.1.js"></script>
     <script src="/static/js/bootstrap.js"></script>
     <script src="/static/js/echarts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     {% block head %}
     {% endblock %}
 </head>
 <body>
 
+<div class="container-fluid">
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row"></div>
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-2"></div>
 
+        <div class="col-lg-2">
     {% block body01 %}
     {% endblock %}
+        </div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-2"></div>
+    </div>
     {% block body02 %}
     {% endblock %}
-    {% block body03 %}
-    {% endblock %}
+    <div>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+        {% block body03 %}
+        {% endblock %}
+    </div>
+        <div class="col-lg-1"></div>
+    </div>
     {% block body04 %}
     {% endblock %}
     {% block body05 %}
@@ -31,6 +50,6 @@
     {% endblock %}
     {% block body09 %}
     {% endblock %}
-
+</div>
 </body>
 </html>

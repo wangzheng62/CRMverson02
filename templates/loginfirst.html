@@ -1,5 +1,11 @@
 
 {% extends 'base01.html' %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+{% endblock %}
+
+
 {% block body01 %}
 
     <form action="{{ url}}" method='post'>
@@ -15,4 +21,74 @@
 
         <button type="submit" class="btn btn-default">Submit</button>
     </form>
+{% endblock %}
+
+{% block body02 %}
+    <div id="app">
+        {[ message ]}
+    </div>
+    <script>var app = new Vue({
+        delimiters:['{[', ']}'],
+        el: '#app',
+        data: {
+            message: 'Hello Vue!'
+        }
+    })</script>
+{% endblock %}
+{% block body03 %}
+    <table id="example" class="display table" width="100%">
+        <thead>
+        <tr class="info">
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Extn.</th>
+            <th>Start date</th>
+            <th>Salary</th>
+        </tr>
+        </thead>
+    </table>
+
+
+    <script>
+        var data = [
+            {
+                '1':"Tiger Nixon",
+                '2':"System Architect",
+                '3':"Edinburgh",
+                '4':"5421",
+                '5':"2011/04/25",
+                '6':"$3,120"
+        },
+            {
+                '1':"Garrett Winters",
+            '2':"Director",
+            '3':"Edinburgh",
+            '4': "8422",
+            '5': "2011/07/25",
+            '6': "$5,300"
+            }
+        ]
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                ajax:'/api/HR/em',
+
+                columns: [
+                    { "data": "name" },
+                    { "data": "position" },
+                    { "data": "office" },
+                    { "data": "extn" },
+                    { "data": "start_date" },
+                    { "data": "salary" }
+                ]
+
+            } );
+        } );
+    </script>
+{% endblock %}
+{% block body04 %}
+    <div class="row">
+    <br>
+    <a class="col-lg-12" href="/api/HR/em">88888888</a>
+    </div>
 {% endblock %}
