@@ -5,7 +5,9 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 {% endblock %}
 
+{% block top %}
 
+{% endblock %}
 {% block body01 %}
 
     <form action="{{ url}}" method='post'>
@@ -36,7 +38,7 @@
     })</script>
 {% endblock %}
 {% block body03 %}
-    <table id="example" class="display table" width="100%">
+    <table id="example" class="table table-hover table-striped" width="100%">
         <thead>
         <tr class="info">
             <th>Name</th>
@@ -51,24 +53,7 @@
 
 
     <script>
-        var data = [
-            {
-                '1':"Tiger Nixon",
-                '2':"System Architect",
-                '3':"Edinburgh",
-                '4':"5421",
-                '5':"2011/04/25",
-                '6':"$3,120"
-        },
-            {
-                '1':"Garrett Winters",
-            '2':"Director",
-            '3':"Edinburgh",
-            '4': "8422",
-            '5': "2011/07/25",
-            '6': "$5,300"
-            }
-        ]
+
         $(document).ready(function() {
             $('#example').DataTable( {
                 ajax:'/api/HR/em',
